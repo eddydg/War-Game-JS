@@ -14,9 +14,7 @@ var cards = {
     "A": 13,
 }
 
-function getFightWinner(c1, c2) {
-    return Math.sign(cards[c1[0]] - cards[c2[0]])
-}
+var getFightWinner = (c1, c2) => Math.sign(cards[c1[0]] - cards[c2[0]]);
 
 var cardsp1 = [];
 var cardsp2 = [];
