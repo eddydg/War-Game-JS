@@ -16,16 +16,8 @@ var cards = {
 
 var getFightWinner = (c1, c2) => Math.sign(cards[c1[0]] - cards[c2[0]]);
 
-var cardsp1 = [];
-var cardsp2 = [];
-var n = parseInt(readline()); // the number of cards for player 1
-for (var i = 0; i < n; i++) {
-    cardsp1.push(readline()); // the n cards of player 1
-}
-var m = parseInt(readline()); // the number of cards for player 2
-for (var i = 0; i < m; i++) {
-    cardsp2.push(readline()); // the m cards of player 2
-}
+var cardsp1 = [...Array(parseInt(readline()))].map(_=> readline());
+var cardsp2 = [...Array(parseInt(readline()))].map(_=> readline());
 
 function playWar(cardp1, cardp2, p1stack = [], p2stack = []) {
 
