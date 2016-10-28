@@ -1,19 +1,4 @@
-var cards = {
-    "2": 0,
-    "3": 1,
-    "4": 3,
-    "5": 4,
-    "6": 5,
-    "7": 6,
-    "8": 7,
-    "9": 8,
-    "1": 9, // '10' as '1' to use only first char card[0]
-    "J": 10,
-    "Q": 11,
-    "K": 12,
-    "A": 13,
-}
-
+var cards = { "2":0,"3":1,"4":3,"5":4,"6":5,"7":6,"8":7,"9":8,"1":9,"J":10,"Q":11,"K":12,"A":13 }
 var getFightWinner = (c1, c2) => Math.sign(cards[c1[0]] - cards[c2[0]]);
 
 var cardsp1 = [...Array(parseInt(readline()))].map(_=> readline());
@@ -26,7 +11,7 @@ function playWar(cardp1, cardp2, p1stack = [], p2stack = []) {
 
     p1stack = p1stack.concat(cardp1, cardsp1.splice(0, 3));
     p2stack = p2stack.concat(cardp2, cardsp2.splice(0, 3));
-        
+    
     [cardp1, cardp2] = [cardsp1.shift(), cardsp2.shift()];
     
     if (getFightWinner(cardp1, cardp2) === 0)
