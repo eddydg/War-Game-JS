@@ -4,9 +4,9 @@ var getFightWinner = (c1, c2) => Math.sign(cards[c1[0]] - cards[c2[0]]);
 var cardsp1 = [...Array(parseInt(readline()))].map(_=> readline());
 var cardsp2 = [...Array(parseInt(readline()))].map(_=> readline());
 
-for (var round = isWar = 0, p1stack = p2stack = winnerStack = []; !!cardsp1[0] && !!cardsp2[0];) {
+for (var round = 0, p1stack = p2stack = winnerStack = []; !!cardsp1[0] && !!cardsp2[0];) {
 
-    if (isWar) {
+    if (!winnerStack) {
         if ((cardsp1.length < 4 || cardsp2.length < 4) && (cardsp1 = cardsp2 = []))
             break;
     
@@ -20,7 +20,6 @@ for (var round = isWar = 0, p1stack = p2stack = winnerStack = []; !!cardsp1[0] &
         p1stack = p2stack = [];
         round++;
     }
-    isWar = !winnerStack;
 }
 
 print(['PAT', '1 ' + round, '2 ' + round][!!cardsp1[0] + !!cardsp2[0] * 2]);
