@@ -13,15 +13,12 @@ function playWar(cardp1, cardp2, p1stack = [], p2stack = []) {
     p2stack = p2stack.concat(cardp2, cardsp2.splice(0, 3));
     
     [cardp1, cardp2] = [cardsp1.shift(), cardsp2.shift()];
-    
     if (getFightWinner(cardp1, cardp2) === 0)
         return playWar(cardp1, cardp2, p1stack, p2stack);
     if (getFightWinner(cardp1, cardp2) === 1)
         cardsp1 = cardsp1.concat(p1stack, cardp1, p2stack, cardp2);
     else
         cardsp2 = cardsp2.concat(p1stack, cardp1, p2stack, cardp2);
-    
-    return false;
 }
 
 for (round = 0;; round++) {
@@ -34,9 +31,9 @@ for (round = 0;; round++) {
     }
 
     [cardp1, cardp2] = [cardsp1.shift(), cardsp2.shift()];
-    if (getFightWinner(cardp1, cardp2) === 1) {
+    if (getFightWinner(cardp1, cardp2) === 1)
         cardsp1.push(cardp1, cardp2);
-    } else if (getFightWinner(cardp1, cardp2) === -1) {
+    else if (getFightWinner(cardp1, cardp2) === -1)
         cardsp2.push(cardp1, cardp2);
-    } else if (playWar(cardp1, cardp2)) break;
+    else if (playWar(cardp1, cardp2)) break;
 }
