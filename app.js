@@ -1,4 +1,4 @@
-var cards = {"2": 0,"3": 1,"4": 3,"5": 4,"6": 5,"7": 6,"8": 7,"9": 8,"1": 9,"J": 10,"Q": 11,"K": 12,"A": 13}
+var cards = {"2": 0,"3": 1,"4": 3,"5": 4,"6": 5,"7": 6,"8": 7,"9": 8,"1": 9,"J": 10,"Q": 11,"K": 12,"A": 13};
 var getFightWinner = (c1, c2) => Math.sign(cards[c1[0]] - cards[c2[0]]);
 
 var cardsp1 = [...Array(parseInt(readline()))].map(_=> readline());
@@ -14,7 +14,6 @@ function playWar(cardp1, cardp2, p1stack = [], p2stack = []) {
     [cardp1, cardp2] = [cardsp1.shift(), cardsp2.shift()];
     if (getFightWinner(cardp1, cardp2) === 0)
         return playWar(cardp1, cardp2, p1stack, p2stack);
-
     if (getFightWinner(cardp1, cardp2) === 1)
         cardsp1 = cardsp1.concat(p1stack, cardp1, p2stack, cardp2);
     else
@@ -30,7 +29,4 @@ for (var round = 0; cardsp1.length && cardsp2.length; round++) {
     else if (playWar(cardp1, cardp2)) break;
 }
 
-if (!cardsp1.length && !cardsp2.length)
-    print('PAT');
-else
-    print(!!cardsp1.length + 2 * !!cardsp2.length + ' ' + round);
+print(['PAT', '1 ' + round, '2 ' + round][!!cardsp1[0] + !!cardsp2[0] * 2]);
