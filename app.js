@@ -6,7 +6,7 @@ var cardsp2 = [...Array(parseInt(readline()))].map(_=> readline());
 
 for (var round = 0, p1stack = p2stack = winnerStack = []; !!cardsp1[0] && !!cardsp2[0];) {
 
-    if (!winnerStack) {
+    if (!winnerStack || !++round) {
         if ((cardsp1.length < 4 || cardsp2.length < 4) && (cardsp1 = cardsp2 = []))
             break;
     
@@ -18,7 +18,6 @@ for (var round = 0, p1stack = p2stack = winnerStack = []; !!cardsp1[0] && !!card
     if (winnerStack = [cardsp2, null, cardsp1][getFightWinner(cardp1, cardp2) + 1]) {
         winnerStack.push(...p1stack, cardp1, ...p2stack, cardp2);
         p1stack = p2stack = [];
-        round++;
     }
 }
 
